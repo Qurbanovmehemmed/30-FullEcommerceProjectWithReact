@@ -22,8 +22,11 @@
     "react-dom": "^18.3.1",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.1.0",
+    "react-slick": "^0.30.3",
+    "react-slider": "^2.0.6",
     "react-toastify": "^11.0.2",
     "redux-persist": "^6.0.0",
+    "slick-carousel": "^1.8.1",
     "yup": "^1.6.1"
   },
   "devDependencies": {

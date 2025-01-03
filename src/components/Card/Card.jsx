@@ -7,7 +7,7 @@ import { addBasket } from '../../redux/basketSlice';
 import { toast } from 'react-toastify';
 import './Card.css'
 
-const Card = () => {
+const Card = ( ) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const products = useSelector((state) => state.products.products);
@@ -86,7 +86,7 @@ const Card = () => {
                   <p>{product.title.slice(0,30)+" ..."}</p>
                   <p>{product.category}</p>
                   <div className="mycard-footer">
-                    <p>Price: ${product.price}</p>
+                    <p>${product.price}</p>
                     <p>⭐{product.rating.rate}</p>
                   </div>
 

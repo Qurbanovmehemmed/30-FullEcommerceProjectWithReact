@@ -49,6 +49,22 @@ export const productSlice = createSlice({
           .includes(action.payload.trim().toLowerCase())
       );
     },
+    sortAzProduct: (state) => {
+      state.products = state.products.sort((a, b) =>
+        a.title.localeCompare(b.title)
+      );
+    },
+    sortZaProduct: (state) => {
+      state.products = state.products.sort((a, b) =>
+        b.title.localeCompare(a.title)
+      );
+    },
+    sortLowProduct: (state) => {
+      state.products = state.products.sort((a, b) => a.price - b.price);
+    },
+    sortHighProduct: (state) => {
+      state.products = state.products.sort((a, b) => b.price - a.price);
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.fulfilled, (state, action) => {

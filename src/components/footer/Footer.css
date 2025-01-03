@@ -1,0 +1,145 @@
+footer{
+    margin-top: 128px;
+    background: #F7F7F9;
+  
+  }
+  .footHead{
+    display: flex;
+    align-items: center;
+    margin-top: 39px;
+    margin-bottom: 39px;
+    
+  
+  
+  }
+  .footHeadText{
+    font-family: Palanquin;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 40px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  
+  }
+  #footBottom{
+    border-top: 1px solid #27314226;
+    margin-bottom: 80px;
+  }
+  .footBottomLeft{
+    margin-top: 56px;
+  }
+  .botText{
+    width: 326px;
+    font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 27.2px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  opacity: 0.7;
+  
+  }
+  .message,.phone{
+    margin-top: 35px;
+    display: flex;
+    gap: 10px;
+    opacity: 0.7;
+  
+  
+  
+  }
+  
+  
+  .sendMessege{
+    
+   margin-top: 35px;
+  }
+  .footBottomRight{
+    margin-top: 56px;
+  }
+  
+  
+  .dark{
+    font-family: Rubik;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 30.6px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #212121;
+  
+  }
+  .light{
+    margin-top: 20px;
+    font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #212121BF;
+  
+  }
+  .follow{
+    margin-left: 32px;
+  }
+  #footLast{
+    background-color: white;
+  margin-top: 25px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  }
+  .test{
+    display: flex;
+    gap: 3px;
+    
+    font-size: 16px;
+    
+    
+  }
+  .font{
+    font-size: 20px;
+    margin-right: 3px;
+  }
+
+  .footSearch{
+    width: 504px;
+height: 48px;
+
+border: 1px solid #9E9E9E59;
+opacity: 0px;
+font-family: Poppins;
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+padding: 0px 16px;
+
+  }
+  .searchIcon{
+position: absolute;
+top: 12px;
+right: 10px;
+font-size: 24px !important;
+  }
+  .allRights{
+    font-family: Poppins;
+font-size: 16px;
+font-weight: 400;
+line-height: 27.2px;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+color: #212121BF;
+
+  }
+  .follow{
+    color: #212121BF !important;
+    font-size: 20px !important;
+
+  }

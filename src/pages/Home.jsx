@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../redux/productSlice";
+import { fetchProducts, sortAzProduct, sortHighProduct, sortLowProduct, sortZaProduct } from "../redux/productSlice";
 import { getUser, updateWishlist } from "../redux/wishlistSlice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +14,7 @@ import Greenbag from "../assets/images/Greenbag.png";
 import Blackbag from "../assets/images/Blackbag.png";
 import NavigateNextOutlinedIcon from "@mui/icons-material/NavigateNextOutlined";
 import "./Home.css";
+import ActionBar from "../components/ActionBar/ActionBar";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -63,6 +64,20 @@ const Home = () => {
     e.stopPropagation();
     dispatch(addBasket({ ...product, quantity: 1 }));
     notify("Product added to basket", "success");
+  };
+
+
+  const handleSortAz = () => {
+    dispatch(sortAzProduct());
+  };
+  const handleSortZa = () => {
+    dispatch(sortZaProduct());
+  };
+  const handleSortLow = () => {
+    dispatch(sortLowProduct());
+  };
+  const handleSortHigh = () => {
+    dispatch(sortHighProduct());
   };
 
   return (
@@ -196,6 +211,7 @@ const Home = () => {
             marginTop: "50px",
             display: "flex",
             justifyContent: "space-between",
+            marginBottom: "20px",
           }}
         >
           <p>Products</p>
@@ -216,6 +232,12 @@ const Home = () => {
             />
           </p>
         </h1>
+        <ActionBar
+            az={handleSortAz}
+            za={handleSortZa}
+            low={handleSortLow}
+            high={handleSortHigh}
+          />
         <Card />
       </div>
     </div>

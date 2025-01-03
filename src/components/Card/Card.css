@@ -30,10 +30,9 @@
   
   .mycard-content p {
     margin: 8px 0;
-    font-size: 14px;
     color: #333;
   }
-  
+
   .mycard:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -47,6 +46,13 @@
     border-top: 1px solid #ddd;
     display: flex;
     justify-content: space-between;
+  }
+  .mycard-footer  :nth-child(1){
+    color: #F75145;
+    font-size: 18px;
+
+    
+
   }
   .myHeart{
     position: absolute;

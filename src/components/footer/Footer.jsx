@@ -1,151 +1,138 @@
-import * as React from "react";
-
-import AspectRatio from "@mui/joy/AspectRatio";
-import Box from "@mui/joy/Box";
-import IconButton from "@mui/joy/IconButton";
-import Card from "@mui/joy/Card";
-import CardContent from "@mui/joy/CardContent";
-import Divider from "@mui/joy/Divider";
-import Input from "@mui/joy/Input";
-import List from "@mui/joy/List";
-import ListSubheader from "@mui/joy/ListSubheader";
-import ListItem from "@mui/joy/ListItem";
-import ListItemButton from "@mui/joy/ListItemButton";
-import Typography from "@mui/joy/Typography";
-import Sheet from "@mui/joy/Sheet";
-import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
-import GitHubIcon from "@mui/icons-material/GitHub";
+import React from "react";
+import "./Footer.css";
+import EmailIcon from "@mui/icons-material/Email";
+import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import { Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import ColorLensRoundedIcon from "@mui/icons-material/ColorLensRounded";
+import { searchProduct } from "../../redux/productSlice";
+import { useDispatch } from "react-redux";
+import SearchIcon from "@mui/icons-material/Search";
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
-export default function Footer() {
-  const [color, setColor] = React.useState("neutral");
+const Footer = () => {
+  const dispatch = useDispatch();
+   const handleSearch = (value) => {
+      dispatch(searchProduct(value));
+    };
   return (
-    <Sheet
-      variant="solid"
-      color={color}
-      invertedColors
-      sx={[
-        {
-          flexGrow: 1,
-          p: 2,
-          borderRadius: { xs: 0, sm: "sm" },
-        },
-        color !== "neutral" && {
-          bgcolor: `${color}.800`,
-        },
-      ]}
-    >
-      <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-        <IconButton
-          variant="soft"
-          size="sm"
-          onClick={() => {
-            const colors = [
-              "primary",
-              "neutral",
-              "danger",
-              "success",
-              "warning",
-            ];
+    <div>
+      <footer>
+        <div className="container">
+          <div className="row" style={{paddingTop:"20px"}}>  
+            <div className="footHead" style={{ display: "flex",marginTop:"20px",justifyContent:"space-between" }}>
+              <h1 className="footHeadText">Snobella</h1>
 
-            const nextColorIndex = colors.indexOf(color) + 1;
-            setColor(colors[nextColorIndex] ?? colors[0]);
-          }}
-        >
-          <ColorLensRoundedIcon fontSize="small" />
-        </IconButton>
-        <Divider orientation="vertical" />
-        <IconButton variant="plain">
-          <FacebookRoundedIcon />
-        </IconButton>
-        <IconButton variant="plain">
-          <GitHubIcon />
-        </IconButton>
-        <Input
-          variant="soft"
-          placeholder="Type in your email"
-          type="email"
-          name="email"
-          endDecorator={
-            <IconButton variant="soft" aria-label="subscribe">
-              <SendIcon />
-            </IconButton>
-          }
-          sx={{ ml: "auto", display: { xs: "none", md: "flex" } }}
-        />
-      </Box>
-      <Divider sx={{ my: 2 }} />
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: { xs: "column", md: "row" },
-          alignItems: { md: "flex-start" },
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-          gap: 2,
-        }}
-      >
-        <Card
-          variant="soft"
-          size="sm"
-          sx={{
-            flexDirection: { xs: "row", md: "column" },
-            minWidth: { xs: "100%", md: "auto" },
-            gap: 1,
-          }}
-        >
-          <AspectRatio
-            ratio="21/9"
-            minHeight={80}
-            sx={{ flexBasis: { xs: 200, md: "initial" } }}
-          >
-            <img
-              alt=""
-              src="/static/blog/mui-product-comparison/ecosystem.png"
-            />
-          </AspectRatio>
-          <CardContent>
-            <Typography level="body-sm">Intro to the MUI ecosystem</Typography>
-            <Typography level="body-xs">Blog post</Typography>
-          </CardContent>
-        </Card>
-        <List
-          size="sm"
-          orientation="horizontal"
-          wrap
-          sx={{ flexGrow: 0, "--ListItem-radius": "8px" }}
-        >
-          <ListItem nested sx={{ width: { xs: "50%", md: 140 } }}>
-            <ListSubheader sx={{ fontWeight: "xl" }}>Sitemap</ListSubheader>
-            <List>
-              <ListItem>
-                <ListItemButton>Services</ListItemButton>
-              </ListItem>
-              <ListItem>
-                <ListItemButton>Blog</ListItemButton>
-              </ListItem>
-              <ListItem>
-                <ListItemButton>About</ListItemButton>
-              </ListItem>
-            </List>
-          </ListItem>
-          <ListItem nested sx={{ width: { xs: "50%", md: 180 } }}>
-            <ListSubheader sx={{ fontWeight: "xl" }}>Products</ListSubheader>
-            <List>
-              <ListItem>
-                <ListItemButton>Joy UI</ListItemButton>
-              </ListItem>
-              <ListItem>
-                <ListItemButton>Base UI</ListItemButton>
-              </ListItem>
-              <ListItem>
-                <ListItemButton>Material UI</ListItemButton>
-              </ListItem>
-            </List>
-          </ListItem>
-        </List>
-      </Box>
-    </Sheet>
+              <div style={{ display: "flex", alignItems: "center" ,position:"relative"}}>
+                <input type="text" placeholder="Search all product" onChange={(e) => handleSearch(e.target.value)} className="footSearch"/>
+                <SearchIcon className="searchIcon" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <section id="footBottom">
+          <div className="container">
+            <div className="row" style={{ display: "flex" }}>
+              <div className="footBottomLeft " style={{ width: "50%" }}>
+                <p className="botText">
+                  The wise man therefore always holds selectionThe wise man
+                  therefore always rejects pleasures to secure other greater
+                </p>
+
+                <div
+                  className="message"
+                  style={{ display: "flex", alignItems: "center" }}
+                >
+                  <EmailIcon className="dark" fontSize="20px" />
+                  Snobella@gmail.com
+                </div>
+                <div
+                  className="phone"
+                  style={{ display: "flex", alignItems: "center" }}
+                >
+                  <LocalPhoneIcon className="dark" fontSize="20px" />
+                  +748 383 23 14
+                </div>
+                <div className="sendMessege">
+                  <Button
+                    variant="outlined"
+                    startIcon={<SendIcon />}
+                    style={{
+                      backgroundColor: "#F7F7F9",
+                      color: "#171717",
+                      marginTop: "10px",
+                      fontSize: "14px",
+                      borderRadius: "5px",
+                      height: "40px",
+                      border: "1px solid #171717",
+                    }}
+                  >
+                    Send message
+                  </Button>
+                </div>
+              </div>
+              <div
+                className="footBottomRight col-lg-6 col-md-12 col-sm-12"
+                style={{ width: "50%" }}
+              >
+                <div
+                  className="row "
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <div className="shopCampanyHelp col-lg-4 col-md-12 col-sm-12">
+                    <p className="dark">Shop</p>
+                    <p className="light">Shoulder Bag</p>
+                    <p className="light">Backpack</p>
+                    <p className="light">Tote Bag</p>
+                    <p className="light">Hand Bag</p>
+                    <p className="light">Evening bags</p>
+                    <p className="light">Purse</p>
+                  </div>
+                  <div className="shopCampanyHelp col-lg-4 col-md-12 col-sm-12">
+                    <p className="dark">Company</p>
+                    <p className="light">About us</p>
+                    <p className="light">Contact</p>
+                    <p className="light">Terms of Use</p>
+                    <p className="light">Customer service</p>
+                  </div>
+                  <div className="shopCampanyHelp col-lg-4 col-md-12 col-sm-12">
+                    <p className="dark">Help</p>
+                    <p className="light">FAQ</p>
+                    <p className="light">Delivery</p>
+                    <p className="light">Cancellation of the order</p>
+                    <p className="light">Don't go back</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="footLast">
+          <div className="container">
+            <div className="row" style={{ display: "flex", justifyContent: "space-between" }}>
+              <div className="allRights">
+                © 2020. All rights reserved.
+              </div>
+              <div className="textLeft">
+                <a href="">
+              <InstagramIcon className="follow" />
+                </a>
+                <a href="">
+                 <FacebookIcon className="follow" />
+                </a>
+
+                <a href="">
+                  <WhatsAppIcon className="follow" />
+                    
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </footer>
+    </div>
   );
-}
+};
+
+export default Footer;
