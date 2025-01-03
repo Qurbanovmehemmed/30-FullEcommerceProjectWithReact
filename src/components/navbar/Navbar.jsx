@@ -22,6 +22,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import "./Navbar.css";
 import { searchProduct } from "../../redux/productSlice";
+import { BorderBottom } from "@mui/icons-material";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -99,6 +100,9 @@ export default function Navbar() {
   const handleLogout = async () => {
     existUser.isLogin = false;
     await axios.put(`http://localhost:3000/users/${existUser.id}`, existUser);
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
   };
 
   const { products } = useSelector((state) => state.basket);
@@ -174,7 +178,7 @@ export default function Navbar() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 }} style={{ marginBottom: "20px",borderBottom:"1px solid #27314226" }}>
       <div className="homeStart">
         <div className="container">
           <div className="topHome">
@@ -204,7 +208,7 @@ export default function Navbar() {
       <div className="container">
         <div className="mainNav" style={{}}>
           <div className="logoNav">
-            <h1 className="logoNavHead">Snobella</h1>
+            <Link to="/" style={{ textDecoration: "none",color:"black" }}><h1 className="logoNavHead">Snobella</h1></Link>
           </div>
           <div className="searchNav">
             <Search>

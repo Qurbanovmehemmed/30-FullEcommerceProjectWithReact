@@ -153,9 +153,32 @@ const ProductDetail = () => {
     dispatch(addBasket({ ...product, quantity: 1 }));
     notify("Product added to basket", "success");
   };
+  const [currentImage, setCurrentImage] = useState(findProduct?.image); 
+
+  const images = [
+    findProduct?.image, 
+    findProduct,
+    findProduct?.image,
+    findProduct?.image,
+  ];
+
+  const handleImageClick = (image) => {
+    setCurrentImage(image);
+  };
   return (
     <div className="container">
       <div className="row">
+        <div style={{ display: "flex" }}>
+          <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+            Home
+          </Link>
+          <NavigateNextOutlinedIcon
+            style={{
+              fontSize: "25px",
+            }}
+          />
+          Shoulder Bags
+        </div>
         <div className="product-container">
           <div
             style={{
@@ -166,27 +189,36 @@ const ProductDetail = () => {
             }}
           >
             <KeyboardArrowUpIcon style={{ fontSize: "30px" }} />
-            <img className="sliderImg" src={findProduct?.image} alt="" />
-            <img className="sliderImg" src={findProduct?.image} alt="" />
-            <img className="sliderImg" src={findProduct?.image} alt="" />
-            <img className="sliderImg" src={findProduct?.image} alt="" />
+            {images.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                alt={`burada test edin`}
+                className="sliderImg"
+                onClick={() => handleImageClick(image)}
+                style={{
+                  width: "100px",
+                  height: "auto",
+                  cursor: "pointer",
+                  transition: "transform 0.3s ease-in-out",
+                }}
+              />
+            ))}
             <KeyboardArrowDownIcon style={{ fontSize: "30px" }} />
           </div>
-
           <div className="product-image">
-            <img className="img" src={findProduct?.image} alt="Product Image" />
-            <i
-              className={`fa-heart ${
-                isInWishlist ? "fa-solid" : "fa-regular"
-              } myHeart`}
-              onClick={(e) => addWishlist(e, findProduct)}
-            ></i>
+            <img
+              className="img"
+              src={currentImage || findProduct?.image}
+              alt="Product Image"
+              style={{ width: "400px", marginLeft: "15px" }}
+            />
           </div>
 
           <div
             className="product-details"
             style={{
-              marginLeft: "20px",
+              marginLeft: "15px",
               display: "flex",
               flexDirection: "column",
               gap: "15px",
@@ -382,7 +414,14 @@ const ProductDetail = () => {
                 justifyContent: "center",
               }}
             >
-              <Link to="/" style={{ color: "black",display:"flex",alignItems:"center" }}>
+              <Link
+                to="/"
+                style={{
+                  color: "black",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
                 <span>view all our products</span>
                 <NavigateNextOutlinedIcon
                   style={{

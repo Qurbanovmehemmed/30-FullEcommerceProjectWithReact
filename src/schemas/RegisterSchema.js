@@ -9,6 +9,10 @@ export const registerschema = yup.object().shape({
     .string()
     .min(5, "Surname must be at least 5 character")
     .required("Surname is required"),
+    gender: yup
+    .string()
+    .oneOf(["male", "female"], "Gender must be male or female")
+    .required("Gender is required"), 
   username: yup
     .string()
     .required("Username is required")

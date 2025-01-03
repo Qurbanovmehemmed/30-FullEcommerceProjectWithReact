@@ -6,6 +6,13 @@ import { toast } from "react-toastify";
 
 import axios from "axios";
 import { registerschema } from "../../../schemas/registerSchema";
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+} from "@mui/material";
 const Register = () => {
   const navigate = useNavigate();
 
@@ -20,7 +27,7 @@ const Register = () => {
       draggable: true,
       progress: undefined,
       theme: "light",
-    });;
+    });
 
   const submitForm = async (values, action) => {
     const { data } = await axios.get("http://localhost:3000/users");
@@ -39,13 +46,13 @@ const Register = () => {
       action.resetForm();
       navigate("/login");
     }, 2000);
-    
   };
 
   const { values, handleChange, handleSubmit, errors } = useFormik({
     initialValues: {
       name: "",
       surname: "",
+      gender:"",
       username: "",
       email: "",
       password: "",
@@ -81,6 +88,7 @@ const Register = () => {
               <span className="error">{errors.surname}</span>
             ) : null}
           </div>
+
           <input
             type="text"
             id="surname"
@@ -88,6 +96,26 @@ const Register = () => {
             onChange={handleChange}
           />
         </div>
+
+        
+        <FormControl className="label-container">
+          <FormLabel id="gender-radio-group-label">Gender</FormLabel>
+          {errors.gender ? <span className="error">{errors.gender}</span> : null}
+          <RadioGroup
+            row
+            aria-labelledby="gender-radio-group-label"
+            name="gender"
+            value={values.gender}
+            onChange={handleChange}
+          >
+            <FormControlLabel
+              value="female"
+              control={<Radio />}
+              label="Female"
+            />
+            <FormControlLabel value="male" control={<Radio />} label="Male" />
+          </RadioGroup>
+        </FormControl>
         <div>
           <div className="label-container">
             <label htmlFor="username">Username</label>
@@ -144,9 +172,12 @@ const Register = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
-        Already have an account?
-          <Link to="/login"> Sign In</Link>
+        <div style={{ color: "#424242", marginTop: "10px" }}>
+          Already have an account?
+          <Link to="/login" style={{ color: "black" }}>
+            {" "}
+            Sign In
+          </Link>
         </div>
         <button className="register-btn" type="submit">
           Sign Up

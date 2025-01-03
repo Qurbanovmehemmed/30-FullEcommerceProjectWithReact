@@ -26,10 +26,18 @@
       "basket": []
     },
     {
-      "id": "46c6"
-    },
-    {
-      "id": "4766"
+      "id": "454a",
+      "name": "idris",
+      "surname": "ceferli",
+      "gender": "male",
+      "username": "idris123",
+      "email": "ceferliidris1@gmail.com",
+      "password": "123456Aa!",
+      "confirmpassword": "123456Aa!",
+      "isLogin": false,
+      "wishlist": [],
+      "basket": [],
+      "row-radio-buttons-group": "male"
     }
   ],
   "products": [

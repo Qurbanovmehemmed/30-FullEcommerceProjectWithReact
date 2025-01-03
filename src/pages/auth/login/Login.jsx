@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const navigate = useNavigate(); // useNavigate hook is used to navigate between pages
+  const navigate = useNavigate(); 
   const notify = (text, type) =>
     toast(text, {
       type: type,
@@ -89,12 +89,12 @@ const Login = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
-          Dont have an account?
-          <Link to="/register"> Sign Up</Link>
+        <div style={{color:'#424242',marginTop:"10px"}}>
+        Don't have an account yet? 
+          <Link to="/register" style={{color:"black"}}> Create now</Link>
         </div>
         <button className="register-btn" type="submit">
-          Sign In
+          Login
         </button>
       </form>
     </div>
