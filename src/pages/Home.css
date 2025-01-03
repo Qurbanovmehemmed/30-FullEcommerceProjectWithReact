@@ -1,0 +1,118 @@
+.sliderContainer{
+    background: #ffe2e0;
+    margin-top: 24px;
+    overflow: hidden;
+    position: relative;
+    height: 630px;
+  }
+  
+  .slides{
+    display: flex;
+  }
+  
+  .slide{
+    min-width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .prev, .next{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    cursor: pointer;
+  }
+  .adminClass{
+    display: none;
+  }
+  
+  .next{
+    right: 15px;
+  }
+  .prev{
+    left: 15px;
+  }
+  .womBagImg{
+    margin-top: 60px;
+    margin-left: 60px;
+  }
+  
+   .startBags {
+    gap: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+   .startBags span {
+    font-family: Rubik;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 40.8px;
+    text-align: left;
+    color: #df4244;
+  }
+  .startBags h1 {
+    font-family: Rubik;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 68px;
+    text-align: left;
+    color: #212121;
+  }
+   .startBags p {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27.2px;
+    text-align: left;
+    color: rgba(33, 33, 33, 0.7490196078);
+  }
+  .startBags button {
+    width: 192px;
+    height: 52px;
+    top: 551px;
+    left: 201px;
+    gap: 0px;
+    border-radius: 8px;
+    opacity: 0px;
+    background: #206363;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  .main {
+    padding-top: 19rem;
+  }
+  .secImg{
+    width: 500px;
+    height: 500px;
+  }
+  .bagChoose {
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+  }
+  .bagChoose .bagcard {
+    width: 264px;
+    height: 162px;
+   
+   
+    background: #f5f5f5;
+    border-radius: 5px;
+  }
+  .bagChoose .bagcard .text {
+    position: absolute;
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 2rem;
+  }
+  .bagChoose img {
+    background: #f5f5f5;
+  }

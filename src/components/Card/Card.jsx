@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addBasket } from '../../redux/basketSlice';
 import { toast } from 'react-toastify';
+import './Card.css'
 
 const Card = () => {
     const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const Card = () => {
       const notify = (text, type) =>
         toast(text, {
           type: type,
-          position: "top-center",
+          position: "top-right",
           autoClose: 1000,
           hideProgressBar: false,
           closeOnClick: false,
@@ -61,13 +62,7 @@ const Card = () => {
     <div>
          <div
           className="cards"
-          style={{
-            maxWidth: "84%",
-            margin: "50px auto",
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "24px",
-          }}
+       
         >
           {products.map((product) => {
             const isInWishlist = user?.wishlist.some(
@@ -88,7 +83,7 @@ const Card = () => {
                   onClick={(e) => addWishlist(e,product)}
                 />
                 <div className="mycard-content">
-                  <p>{product.title}</p>
+                  <p>{product.title.slice(0,30)+" ..."}</p>
                   <p>{product.category}</p>
                   <div className="mycard-footer">
                     <p>Price: ${product.price}</p>
@@ -99,7 +94,7 @@ const Card = () => {
                     className="add-to-cart"
                     onClick={(e) => addToBasket(e,product)}
                   >
-                    Add To Card
+                    Add to card
                   </button>
                 </div>
               </div>

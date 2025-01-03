@@ -18,9 +18,10 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import Person3Icon from "@mui/icons-material/Person3";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import "./Navbar.css";
+import { searchProduct } from "../../redux/productSlice";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -65,6 +66,7 @@ export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const isMenuOpen = Boolean(anchorEl);
   const notify = (text, type) =>
     toast(text, {
@@ -131,15 +133,27 @@ export default function Navbar() {
             handleMenuClose(), handleLogout();
           }}
         >
-          <Link to="/">Logout</Link>
+          <Link to="/" style={{
+            textDecoration:"none",
+            color:"black",
+            fontSize:"16px"
+          }}>Logout</Link>
         </MenuItem>
       ) : (
         <>
           <MenuItem onClick={handleMenuClose}>
-            <Link to="/register">Register</Link>
+            <Link to="/register" style={{
+            textDecoration:"none",
+            color:"black",
+            fontSize:"16px"
+          }}>Register</Link>
           </MenuItem>
           <MenuItem onClick={handleMenuClose}>
-            <Link to="/login">Login</Link>
+            <Link to="/login" style={{
+            textDecoration:"none",
+            color:"black",
+            fontSize:"16px"
+          }}>Login</Link>
           </MenuItem>
         </>
       )}
@@ -153,6 +167,10 @@ export default function Navbar() {
     } else {
       navigate("/wishlist");
     }
+  };
+
+  const handleSearch = (value) => {
+    dispatch(searchProduct(value));
   };
 
   return (
@@ -184,7 +202,7 @@ export default function Navbar() {
       </div>
 
       <div className="container">
-        <div className="mainNav">
+        <div className="mainNav" style={{}}>
           <div className="logoNav">
             <h1 className="logoNavHead">Snobella</h1>
           </div>
@@ -193,7 +211,8 @@ export default function Navbar() {
               <StyledInputBase
                 placeholder="Search all products"
                 inputProps={{ "aria-label": "search" }}
-                style={{ width: "100%", border: "2px solid red" }}
+                style={{ width: "540px",height:"40px",backgroundColor:"#F7F9FC",fontSize:"16px"}}
+                onChange={(e) => handleSearch(e.target.value)}
               />
               <SearchIcon
                 style={{
@@ -201,9 +220,16 @@ export default function Navbar() {
                   right: "10px",
                   top: "10px",
                   color: "#273142",
+                  fontSize: 24,
                 }}
               />
             </Search>
+
+
+           
+
+
+
           </div>
           <div className="userProfile">
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
@@ -237,7 +263,7 @@ export default function Navbar() {
                   color: "#273142",
                 }}
               >
-                {existUser ? existUser.username : null}
+                {existUser ? existUser.username : "Sign up"}
               </IconButton>
               <IconButton
                 size="large"
@@ -247,26 +273,33 @@ export default function Navbar() {
                   heartLogin();
                 }}
               >
-                <FavoriteIcon   style={{
+                <FavoriteIcon
+                  style={{
                     fontSize: 24,
                     color: "#273142",
-                  }} />
+                  }}
+                />
+                <p style={{marginLeft:"10px"}}> Wishlist</p>
               </IconButton>
               <IconButton
                 size="large"
                 aria-label="show 17 new notifications"
                 color="inherit"
-                
               >
                 <Link to="/basket">
-                  <Badge badgeContent={totalCount} color="error">
-                    <ShoppingCartIcon    style={{
-                    fontSize: 24,
-                    color: "#273142",
-                  }}/>
+                  <Badge badgeContent={totalCount} color="error" size="large">
+                    <ShoppingCartIcon
+                      style={{
+                        fontSize: 24,
+                        color: "#273142",
+                      }}
+                    />
                   </Badge>
+                  
                 </Link>
+                <p style={{marginLeft:"13px"}}> Basket</p>
               </IconButton>
+              
             </Box>
             <Box sx={{ display: { xs: "flex", md: "none" } }}>
               <IconButton
@@ -281,11 +314,27 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+      <div className="container">
+        <div className="navBotSelect"
+        style={{
+          display:"flex",
+          justifyContent:"space-between",
+          padding:"15px 0",
+          maxWidth:"68%",
+          marginBottom:"15px",
+          }}>
+        <p>Evening bags</p>
+        <p>Shoulder bag</p>
+        <p>Backpack</p>
+        <p>Handbag</p>
+        <p>Postman bag</p>
+        <p>Belt bags</p>
+        </div>
 
-
+      </div>
 
       {/* material ui */}
-      <AppBar
+      {/* <AppBar
         position="static"
         style={{ backgroundColor: "black", color: "goldenrod" }}
       >
@@ -372,7 +421,7 @@ export default function Navbar() {
             </IconButton>
           </Box>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
       {renderMenu}
     </Box>
   );
